@@ -1,0 +1,43 @@
+<div class="card-body">
+    <h5 class="card-title">File Details</h5>
+    <form [formGroup]="addFileForm" (ngSubmit)="addEvent()"> 
+        <div class="form-group">
+        <label for="txtTitle">Title</label>
+        <input class="form-control" id="txtTitle" aria-describedby="txtTitle" placeholder="Enter Title" formControlName="title">
+        </div>
+        <div class="form-group">
+            <label for="txtUrl">Url</label>
+            <input class="form-control" id="txtUrl" aria-describedby="txtUrl" placeholder="Enter URL" formControlName="url">
+        </div>
+        
+        <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="cbApproved" formControlName="approved">
+        <label class="form-check-label" for="cbApproved" >Approved</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<div class="card-body">
+    <h5 class="card-title">File Listing</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col" >Title</th>
+            <th scope="col" >URL</th>
+            <th scope="col">Approved</th>
+            <th scope="col">Approved</th>
+            <th scope="col">Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr mdbTableCol *ngFor="let file of files; let i = index">
+                <td>{{file.title}}</td>
+                <td>{{file.url}}</td>
+                <td>{{file.approved}}</td>
+                <td (click) = "editData(i, file)"> <button type="button" class="btn btn-warning">Edit</button> </td>
+                <td (click) = "delete(i, file)"> <button type="button" class="btn btn-danger">Delete</button>  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
